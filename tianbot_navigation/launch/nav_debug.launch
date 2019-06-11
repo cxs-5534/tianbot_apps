@@ -1,0 +1,7 @@
+<launch>
+
+    <include file="$(find turtlebot_interactive_markers)/launch/interactive_markers.launch" />
+    <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="tianbot_debug_navigation" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tianbot_navigation)/rviz/nav_debug.rviz"/>
+
+</launch>

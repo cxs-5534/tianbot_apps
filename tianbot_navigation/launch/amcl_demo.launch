@@ -1,0 +1,18 @@
+<launch>
+
+  <param name="use_sim_time" value="false" />
+
+  <!-- Set the name of the map yaml file: can be overridden on the command line. -->
+  <arg name="map" default="map.yaml" />
+
+  <!-- Run the map server with the desired map -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find tianbot_navigation)/maps/$(arg map)"/>
+
+  <include file="$(find tianbot_navigation)/launch/lidar.launch"/>
+
+  <!-- The move_base node -->
+  <include file="$(find tianbot_navigation)/launch/includes/laser_move_base.launch.xml" />
+  <!-- The amcl node -->
+  <include file="$(find tianbot_navigation)/launch/includes/laser_amcl.launch.xml" />
+
+</launch>
